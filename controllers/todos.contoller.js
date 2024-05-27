@@ -13,7 +13,7 @@ export async function getTodosController(req, res) {
     res.status(200).json({
       success: true,
       message: 'Todos fetched succsessfully!',
-      data: todos,
+      todos,
     });
   } catch (error) {
     console.log(error);
@@ -29,7 +29,7 @@ export async function addTodoController(req, res) {
     const validatedData = todoSchema.parse(req.body);
     const { title, description, isCompleted } = validatedData;
 
-    const createTodo = await Todo.create({
+    const addedTodo = await Todo.create({
       title,
       description,
       isCompleted,
@@ -38,7 +38,7 @@ export async function addTodoController(req, res) {
     res.status(201).json({
       success: true,
       message: 'Todo added successfully',
-      data: createTodo,
+      addedTodo,
     });
   } catch (error) {
     console.log(error);
