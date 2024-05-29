@@ -1,4 +1,4 @@
-import { boolean, z } from 'zod';
+import { z } from 'zod';
 import Todo from '../models/todo.model.js';
 
 const todoSchema = z.object({

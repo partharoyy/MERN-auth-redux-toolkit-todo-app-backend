@@ -3,13 +3,14 @@ import 'dotenv/config';
 import cors from 'cors';
 import todosRouter from './routes/todos.route.js';
 import { connectDB } from './database/index.js';
+import cookieParser from 'cookie-parser';
 
 await connectDB(process.env.MONGODB_URI);
 
 const app = express();
 
 app.use(cors());
-
+app.use(cookieParser());
 app.use(express.json());
 
 app.get('/api/health', (req, res) => {
