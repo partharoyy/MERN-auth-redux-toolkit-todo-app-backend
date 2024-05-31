@@ -44,11 +44,14 @@ export async function signupController(req, res) {
     user.token = token;
     user.password = undefined; // we dont want to send the password to the frontend
 
-    return res.status(201).json({
-      success: true,
-      message: 'User signed up successfully',
-      user,
-    });
+    return res
+      .status(201)
+      .json({
+        success: true,
+        message: 'User signed up successfully',
+        user,
+      })
+      .redirect('/');
   } catch (error) {
     console.log(error);
     return {
